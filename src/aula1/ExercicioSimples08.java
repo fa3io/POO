@@ -2,9 +2,9 @@ package aula1;
 
 import java.util.Scanner;
 
-public class ExercicioSimples07 {
-
-	static long fibo(int numero) {
+public class ExercicioSimples08 {
+	
+static long fibo(int numero) {
 		
 		int nAtual = 0; // atual
 		int antnAnterior = 0; // anterior
@@ -29,10 +29,10 @@ public class ExercicioSimples07 {
 		System.out.println("Digite o Numero para descobrir a seguencia: ");
 		numero = scanner.nextInt();
 		
-		System.out.print("(" + numero + "):" + ExercicioSimples07.fibo(numero) + "\t");
 
 		for (int i = 0; i <= numero; i++) {
 			System.out.print("(" + i + "):" + ExercicioSimples07.fibo(i) + "\t");
 		}
 	}
+
 }

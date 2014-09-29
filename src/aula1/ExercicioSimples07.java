@@ -28,8 +28,6 @@ public class ExercicioSimples07 {
 		
 		System.out.println("Digite o Numero para descobrir a seguencia: ");
 		numero = scanner.nextInt();
-		
-		System.out.print("(" + numero + "):" + ExercicioSimples07.fibo(numero) + "\t");
 
 		for (int i = 0; i <= numero; i++) {
 			System.out.print("(" + i + "):" + ExercicioSimples07.fibo(i) + "\t");

@@ -12,9 +12,10 @@ public class ExercicioSimples10 {
 		int numero = scanner.nextInt();
 
 		System.out.println("Fatorial de " + numero + " = " + fat(numero));
-		System.out.println("Seq. de Fibonacci, elemento na posica " + numero + " = "
-				+ fib(numero));
-		System.out.println("===============================================");
+		System.out.println("Seq. de Fibonacci, até: " + numero + " ");
+		for (int i = 1; i <= numero; i++) {
+			System.out.print(i + "º - " + fib(i) + " | ");
+		}
 	}
 
 	public static long fat(int n) {

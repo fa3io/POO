@@ -3,7 +3,7 @@ package uri;
 import java.util.Locale;
 import java.util.Scanner;
 
-public class Area_do_Circulo {
+public class AreaDoCirculo {
 	
 	
 	public static void main(String[] args) {

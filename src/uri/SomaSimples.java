@@ -2,18 +2,18 @@ package uri;
 
 import java.util.Scanner;
 
-public class Produto_Simples {
-	
+public class SomaSimples {
+
 	public static void main(String[] args) {
-		int a ,b, prod ;
+		int a ,b, soma ;
 		Scanner teclado = new Scanner (System.in);
 		
 		a = teclado.nextInt();
 		b = teclado.nextInt();
 		
-		prod = a * b;
+		soma = a +b;
 		
-		System.out.printf("PROD = "+prod+"\n");
+		System.out.printf("SOMA = "+soma+"\n");
 		
 
 	}

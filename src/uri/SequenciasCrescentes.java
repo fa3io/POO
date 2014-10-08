@@ -22,15 +22,12 @@ public class SequenciasCrescentes {
 			} else {
 				for (int i = 1; i <= x; i++) {
 					if (i == x) {
-						//System.out.print(i);
 						sequencia.append(i +"\n" );
 					} else {
-						//System.out.print(i + " ");
+						
 						sequencia.append(i +" " );
 					}
 				}
-				//System.out.println();
-				//System.out.printf(sequencia.toString());
 				bw.write(sequencia.toString());
 				bw.flush();
 				sequencia.delete(0, sequencia.length());

@@ -7,6 +7,9 @@ public class ClockDisplay {
 	private NumberDisplay seconds;
 
 	public ClockDisplay() {
+		this.hours = new NumberDisplay(23,0);
+		this.minutes = new NumberDisplay(59,0);
+		this.seconds = new NumberDisplay(59,0);
 	}
 
 	public ClockDisplay(NumberDisplay hours, NumberDisplay minutes, NumberDisplay seconds) {
@@ -17,9 +20,9 @@ public class ClockDisplay {
 	
 	
 	public ClockDisplay(int hours, int minutes, int seconds) {
-		this.hours.setValue(hours);
-		this.minutes.setValue(minutes);
-		this.seconds.setValue(seconds);
+		this.hours = new NumberDisplay(23,hours);
+		this.minutes = new NumberDisplay(59,minutes);
+		this.seconds = new NumberDisplay(59,seconds);
 	}
 	public void  tickTime(){
 		if(seconds.incZerar()){
@@ -55,7 +58,7 @@ public class ClockDisplay {
 	
 	@Override
 	public String toString() {
-		return hours.getValue() + ":"+minutes.getValue()+":"+seconds;
+		return hours + ":"+ minutes + ":" + seconds;
 	}
 	
 	

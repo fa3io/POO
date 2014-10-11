@@ -2,24 +2,26 @@ package aula3;
 
 public class Clock {
 	
-	public static void main(String[] args) {
+	static ClockDisplay display;
+	
+	public void exec() throws InterruptedException{
 		
-		NumberDisplay horas = new NumberDisplay(23, 9);
-		NumberDisplay minutos = new NumberDisplay(59, 58);
-		NumberDisplay segundos = new NumberDisplay(59, 30);
+		display = new ClockDisplay();
 		
-		ClockDisplay clockDisplay = new ClockDisplay(horas, minutos, segundos);
-		
-		
-		for (int i = 0; i <= 100; i++) {
-			System.out.println(clockDisplay.toString());
-			clockDisplay.tickTime();
+		while (true) {
+			System.out.println(display);
+			display.tickTime();
+			Thread.sleep(1000);
+			
 		}
 		
-		System.out.println(clockDisplay.toString());
 		
+	}
+	
+	public static void main(String[] args) throws InterruptedException {
 		
-		
+		Clock relogio = new Clock();
+		relogio.exec();
 		
 	}
 

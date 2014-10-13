@@ -4,7 +4,7 @@ public class Endereco {
 
 	private String logradouro;
 	private String numero;
-	private String completo;
+	private String complemento;
 	private String cep;
 	
 	public Endereco() {
@@ -14,7 +14,7 @@ public class Endereco {
 	public Endereco(String logradouro, String numero, String completo, String cep) {
 		this.logradouro = logradouro;
 		this.numero = numero;
-		this.completo = completo;
+		this.complemento = completo;
 		this.cep = cep;
 	}
 
@@ -36,12 +36,12 @@ public class Endereco {
 		this.numero = numero;
 	}
 
-	public String getCompleto() {
-		return completo;
+	public String getComplemento() {
+		return complemento;
 	}
 
-	public void setCompleto(String completo) {
-		this.completo = completo;
+	public void setComplemento(String completo) {
+		this.complemento = completo;
 	}
 
 	public String getCep() {
@@ -50,5 +50,10 @@ public class Endereco {
 
 	public void setCep(String cep) {
 		this.cep = cep;
+	}
+	
+	@Override
+	public String toString() {
+		return getLogradouro() + " Nº " +getNumero()+"  "+ getComplemento()+ " Cep: " + getCep();
 	}
 }

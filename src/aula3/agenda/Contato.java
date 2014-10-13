@@ -26,9 +26,12 @@ public class Contato {
 		return telefones;
 	}
 	
-	// Efetuar Implementação
-	public String mostrarTelefones(){
-		return "";
+	
+	public void mostrarTelefones(){
+		for (int i = 0; i < telefones.size(); i++) {
+			System.out.println(telefones.get(i));
+		}
+
 	}
 
 	public Integer getId() {
@@ -54,4 +57,5 @@ public class Contato {
 	public void setEndereco(Endereco endereco) {
 		this.endereco = endereco;
 	}
+	
 }

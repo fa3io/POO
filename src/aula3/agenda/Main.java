@@ -2,6 +2,7 @@
 package aula3.agenda;
 
 import java.awt.event.ActionListener;
+import java.util.List;
 
 public class Main extends javax.swing.JFrame {
 
@@ -26,7 +27,7 @@ public class Main extends javax.swing.JFrame {
         lbCep = new javax.swing.JLabel();
         txtCep = new javax.swing.JTextField();
         btnEditarEndereco = new javax.swing.JButton();
-        btnSalvarEndereco = new javax.swing.JButton();
+        btnSalvar = new javax.swing.JButton();
         panelTelefone = new javax.swing.JPanel();
         spTblTelefones = new javax.swing.JScrollPane();
         tblTelefones = new javax.swing.JTable();
@@ -59,7 +60,7 @@ public class Main extends javax.swing.JFrame {
 
         btnEditarEndereco.setIcon(new javax.swing.ImageIcon(getClass().getResource("/aula3/agenda/img/edit.png"))); // NOI18N
 
-        btnSalvarEndereco.setIcon(new javax.swing.ImageIcon(getClass().getResource("/aula3/agenda/img/save2.png"))); // NOI18N
+        btnSalvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/aula3/agenda/img/save2.png"))); // NOI18N
 
         javax.swing.GroupLayout panelEnderecoLayout = new javax.swing.GroupLayout(panelEndereco);
         panelEndereco.setLayout(panelEnderecoLayout);
@@ -86,7 +87,7 @@ public class Main extends javax.swing.JFrame {
                         .addComponent(txtCep)))
                 .addGap(18, 18, 18)
                 .addGroup(panelEnderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnSalvarEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnEditarEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -107,7 +108,7 @@ public class Main extends javax.swing.JFrame {
                         .addComponent(btnEditarEndereco)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
                 .addGroup(panelEnderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnSalvarEndereco)
+                    .addComponent(btnSalvar)
                     .addGroup(panelEnderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(lbComplemento)
                         .addComponent(txtComplemento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -160,11 +161,6 @@ public class Main extends javax.swing.JFrame {
 
         panelContato.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Contatos"));
 
-        listContatos.setModel(new javax.swing.AbstractListModel() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public Object getElementAt(int i) { return strings[i]; }
-        });
         spListContato.setViewportView(listContatos);
 
         btnAdicionarContato.setIcon(new javax.swing.ImageIcon(getClass().getResource("/aula3/agenda/img/add.png"))); // NOI18N
@@ -279,7 +275,24 @@ public class Main extends javax.swing.JFrame {
         btnEditarEndereco.addActionListener(listener);
     }
     public void addSalvarEnderecoListener(ActionListener listener){
-        btnSalvarEndereco.addActionListener(listener);
+        btnSalvar.addActionListener(listener);
+    }
+    
+    public void setList(List<Contato> lista){
+        for (Contato contato : lista) {
+            
+        }
+        
+        
+    }
+    public void setEndereco(Endereco endereco){
+        txtLogradouro.setText(endereco.getLogradouro());
+        txtNumeroEndereco.setText(endereco.getNumero());
+        txtComplemento.setText(endereco.getComplemento());
+        txtCep.setText(endereco.getCep());
+    }
+    public void setTelefones(List<Telefone> telefones){
+        // logica para colocar telefones na tabela
     }
     
     
@@ -291,7 +304,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JButton btnEditarEndereco;
     private javax.swing.JButton btnRemoverContato;
     private javax.swing.JButton btnRemoverTelefone;
-    private javax.swing.JButton btnSalvarEndereco;
+    private javax.swing.JButton btnSalvar;
     private javax.swing.JLabel lbCep;
     private javax.swing.JLabel lbComplemento;
     private javax.swing.JLabel lbLogradouro;

@@ -3,7 +3,7 @@ package aula3.agenda;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Agenda {
+public class Agenda extends ArrayList<Contato>{
 
 	private List<Contato> contatos;
 
@@ -27,7 +27,7 @@ public class Agenda {
 		return contatos;
 	}
 
-	// Efetuar Implementação
+	// Efetuar Implementacao
 	public String mostrarContatos() {
 		return "";
 	}

@@ -7,6 +7,7 @@ public class CadContato extends javax.swing.JDialog {
     public CadContato(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        rbFixo.setSelected(true);
     }
 
     @SuppressWarnings("unchecked")
@@ -227,35 +228,45 @@ public class CadContato extends javax.swing.JDialog {
         endereco.setNumero(txtNumeroEndereco.getText());
         endereco.setComplemento(txtComplemento.getText());
         endereco.setCep(txtCep.getText());
-        
+
         telefone.setTipo(rbFixo.isSelected() ? "Fixo" : "Celular");
         telefone.setTelefone(txtNumeroTelefone.getText());
-        
+
         contato.setEndereco(endereco);
         contato.addTelefone(telefone);
 
         return contato;
     }
-    
-    public void setContato(Contato contato){
+
+    public void setContato(Contato contato) {
         Endereco endereco = contato.getEndereco();
-        
-        
+
         txtNome.setText(contato.getNome());
 
         txtLogradouro.setText(endereco.getLogradouro());
         txtNumeroEndereco.setText(endereco.getNumero());
         txtComplemento.setText(endereco.getComplemento());
         txtCep.setText(endereco.getCep());
-        
-        
+
         // Verificar outras implementação para desabilitar campos
-        
         rbCelular.enable(false);
         rbFixo.enable(false);
         txtNumeroTelefone.enable(false);
-        
+
     }
+
+    public void limparCampos() {
+
+        txtNome.setText("");
+        txtLogradouro.setText("");
+        txtNumeroEndereco.setText("");
+        txtComplemento.setText("");
+        txtCep.setText("");
+        rbFixo.setSelected(true);
+        txtNumeroTelefone.setText("");
+
+    }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup bgTipoTelefone;

@@ -7,6 +7,7 @@ public class CadTelefone extends javax.swing.JDialog {
     public CadTelefone(javax.swing.JFrame frame, boolean modal) {
         super(frame, modal);
         initComponents();
+         rbFixo.setSelected(true);
     }
 
     @SuppressWarnings("unchecked")
@@ -115,11 +116,12 @@ public class CadTelefone extends javax.swing.JDialog {
     public void setTelefone(Telefone telefone){
         txtNumero.setText(telefone.getTelefone());
         rbFixo.setSelected(telefone.getTipo().equals("Fixo"));
-        rbCelular.setSelected(telefone.getTipo().equals("Fixo"));
-        
-  
-        
-        
+        rbCelular.setSelected(telefone.getTipo().equals("Fixo"));  
+    }
+    
+    public void limpar(){
+        txtNumero.setText("");
+        rbFixo.setSelected(true);
     }
     
 

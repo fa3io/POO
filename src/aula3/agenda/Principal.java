@@ -2,12 +2,21 @@
 package aula3.agenda;
 
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
 import java.util.List;
+import javax.swing.DefaultListModel;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
-public class Main extends javax.swing.JFrame {
+public class Principal extends javax.swing.JFrame {
 
-    public Main() {
+    private DefaultListModel modelLista;
+    private DefaultTableModel modelTabela;
+    
+    public Principal() {
         initComponents();
+        modelLista = new DefaultListModel();
+        
     }
 
     @SuppressWarnings("unchecked")
@@ -38,6 +47,7 @@ public class Main extends javax.swing.JFrame {
         listContatos = new javax.swing.JList();
         btnAdicionarContato = new javax.swing.JButton();
         btnRemoverContato = new javax.swing.JButton();
+        txtPesquisa = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -172,29 +182,36 @@ public class Main extends javax.swing.JFrame {
         panelContatoLayout.setHorizontalGroup(
             panelContatoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelContatoLayout.createSequentialGroup()
-                .addContainerGap(140, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(panelContatoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnAdicionarContato, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnRemoverContato, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelContatoLayout.createSequentialGroup()
+                        .addGroup(panelContatoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnAdicionarContato, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnRemoverContato, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelContatoLayout.createSequentialGroup()
+                        .addComponent(txtPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(52, 52, 52))))
             .addGroup(panelContatoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(panelContatoLayout.createSequentialGroup()
-                    .addContainerGap()
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelContatoLayout.createSequentialGroup()
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(spListContato, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(54, Short.MAX_VALUE)))
+                    .addGap(54, 54, 54)))
         );
         panelContatoLayout.setVerticalGroup(
             panelContatoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelContatoLayout.createSequentialGroup()
-                .addGap(68, 68, 68)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelContatoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(txtPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 98, Short.MAX_VALUE)
                 .addComponent(btnAdicionarContato)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnRemoverContato)
-                .addContainerGap(98, Short.MAX_VALUE))
+                .addGap(87, 87, 87))
             .addGroup(panelContatoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(panelContatoLayout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(spListContato, javax.swing.GroupLayout.DEFAULT_SIZE, 221, Short.MAX_VALUE)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelContatoLayout.createSequentialGroup()
+                    .addContainerGap(50, Short.MAX_VALUE)
+                    .addComponent(spListContato, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap()))
         );
 
@@ -227,13 +244,13 @@ public class Main extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(separador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(panelContato, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelPrincipalLayout.createSequentialGroup()
                         .addComponent(panelEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(panelTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(50, Short.MAX_VALUE))
+                        .addComponent(panelTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(panelContato, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(35, 35, 35))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -277,22 +294,60 @@ public class Main extends javax.swing.JFrame {
     public void addSalvarEnderecoListener(ActionListener listener){
         btnSalvar.addActionListener(listener);
     }
-    
-    public void setList(List<Contato> lista){
-        for (Contato contato : lista) {
-            
-        }
-        
-        
+    public void addListaListener(MouseAdapter mouseAdpter){
+        listContatos.addMouseListener(mouseAdpter); 
+        // verificar implementação no java GUJ com Vinny Godoi 
     }
+    
+    public void setListModel(List<Contato> lista){
+        modelLista.removeAllElements();
+        
+        for (Contato contato : lista) {
+            modelLista.addElement(contato); // deve inserir na lista o to String do contato acompanhar
+        }
+        listContatos.setModel(modelLista); 
+    }
+    
     public void setEndereco(Endereco endereco){
         txtLogradouro.setText(endereco.getLogradouro());
         txtNumeroEndereco.setText(endereco.getNumero());
         txtComplemento.setText(endereco.getComplemento());
         txtCep.setText(endereco.getCep());
     }
+    
     public void setTelefones(List<Telefone> telefones){
         // logica para colocar telefones na tabela
+    }
+    public int getListSelect(){
+        return listContatos.getSelectedIndex();
+    }
+     public  DefaultListModel getListModel(){
+        return modelLista;
+    }
+     
+    public void setTableModel(String[][] dados, String[] colunas  ){
+        modelTabela = new DefaultTableModel(dados, colunas);
+        tblTelefones.setModel(modelTabela);
+    }
+    public DefaultTableModel getTableModel(){
+        return modelTabela;
+    }
+    
+     public void setTableModel( String[] colunas  ){
+        modelTabela = new DefaultTableModel( new Object [][] {{null, null},{null, null}}, colunas);
+        tblTelefones.setModel(modelTabela);
+    }
+    public JTable getTable(){
+        return tblTelefones;
+    }
+    public void limparCampos(String[] colunas){
+        
+        txtLogradouro.setText("");
+        txtNumeroEndereco.setText("");
+        txtComplemento.setText("");
+        txtCep.setText("");
+        
+        setTableModel(colunas);
     }
     
     
@@ -323,5 +378,6 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JTextField txtComplemento;
     private javax.swing.JTextField txtLogradouro;
     private javax.swing.JTextField txtNumeroEndereco;
+    private javax.swing.JTextField txtPesquisa;
     // End of variables declaration//GEN-END:variables
 }

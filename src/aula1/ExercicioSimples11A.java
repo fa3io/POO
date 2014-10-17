@@ -8,12 +8,11 @@ public class ExercicioSimples11A {
 	}
 
 	private static int soma(int i, int j) {
-		if(i == 0){
-			return j ;
-		}else if(j ==1 ) {
-			return 1;
+		if(j == 0){
+			return i ;
+		
 		}else {
-			return soma(i, j-1)+ 1;
+                    return soma(i, j-1)+ 1;
 		}
 	}
 
@@ -25,7 +24,7 @@ public class ExercicioSimples11A {
 1 3 
 1 2
 1 1 
-
+1 0 
 
 
 

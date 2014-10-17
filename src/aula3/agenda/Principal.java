@@ -11,10 +11,10 @@ import javax.swing.table.DefaultTableModel;
 public class Principal extends javax.swing.JFrame {
 
     private DefaultListModel modelLista;
-    private DefaultTableModel modelTabela;
     
     public Principal() {
         initComponents();
+        habilitacaoDeCampos(false);
         modelLista = new DefaultListModel();
         
     }
@@ -308,6 +308,19 @@ public class Principal extends javax.swing.JFrame {
         listContatos.setModel(modelLista); 
     }
     
+    public Endereco getEndereco(){
+        
+        Endereco endereco = new Endereco();
+        
+        endereco.setLogradouro(txtLogradouro.getText());
+        endereco.setNumero(txtNumeroEndereco.getText());
+        endereco.setComplemento(txtComplemento.getText());
+        endereco.setCep(txtCep.getText());
+        
+        return endereco;
+        
+    }
+    
     public void setEndereco(Endereco endereco){
         txtLogradouro.setText(endereco.getLogradouro());
         txtNumeroEndereco.setText(endereco.getNumero());
@@ -315,23 +328,19 @@ public class Principal extends javax.swing.JFrame {
         txtCep.setText(endereco.getCep());
     }
     
+
     public int getListSelect(){
         return listContatos.getSelectedIndex();
     }
      public  DefaultListModel getListModel(){
         return modelLista;
     }
-     
-    public void setTableModel(String[][] dados, String[] colunas  ){
-        modelTabela = new DefaultTableModel(dados, colunas);
-        tblTelefones.setModel(modelTabela);
-    }
     public DefaultTableModel getTableModel(){
-        return modelTabela;
+        return (DefaultTableModel) tblTelefones.getModel();
     }
     
      public void setTableModel( String[] colunas  ){
-        modelTabela = new DefaultTableModel( new Object [][] {{null, null},{null, null}}, colunas);
+        DefaultTableModel modelTabela = new DefaultTableModel( new Object [][] {{null, null},{null, null}}, colunas);
         tblTelefones.setModel(modelTabela);
     }
     public JTable getTable(){
@@ -345,6 +354,13 @@ public class Principal extends javax.swing.JFrame {
         txtCep.setText("");
         
         setTableModel(colunas);
+    }
+    
+    public final void habilitacaoDeCampos(Boolean opcao){
+        txtLogradouro.setEditable(opcao);
+        txtNumeroEndereco.setEditable(opcao);
+        txtComplemento.setEditable(opcao);
+        txtCep.setEditable(opcao);
     }
     
     

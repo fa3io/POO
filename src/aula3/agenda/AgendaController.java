@@ -7,6 +7,7 @@ import java.awt.event.MouseEvent;
 import java.util.List;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 public class AgendaController {
 
@@ -27,6 +28,8 @@ public class AgendaController {
         view.addListaListener(new ClickList() );
         view.addAdcionarTelefoneListener(new AddTelefoneListener());
         view.addRemoveTelefoneListener(new RemoveTelefoneListener());
+        view.addEditarEnderecoListener(new EditarEnderecoListener());
+        view.addSalvarEnderecoListener(new SalvarEnderecoListener());
 
         this.cadTelefone.addTelefoneListener(new TelefoneListener());
 
@@ -78,11 +81,18 @@ public class AgendaController {
         public void actionPerformed(ActionEvent e) {
             int indiceLista = view.getListSelect();
             int indiceTabela = view.getTable().getSelectedRow();
+           
             
            if (indiceTabela != -1) {
-               view.getTableModel().removeRow(indiceTabela);
+               
+               DefaultTableModel model = view.getTableModel();
+               
+               model.removeRow(indiceTabela);
                contatos.get(indiceLista).getTelefones().remove(indiceTabela);
-               view.setTableModel(listar(contatos.get(indiceLista).getTelefones()),colunas);
+               
+               view.getTable().setModel(new DefaultTableModel(listar(contatos.get(indiceLista).getTelefones()), colunas));
+               
+              
                 
             }else{
                 JOptionPane.showMessageDialog(null, "Selecione um contato para incluir telefone", "Erro de Seleção", JOptionPane.CANCEL_OPTION);
@@ -114,16 +124,39 @@ public class AgendaController {
         @Override
         public void mouseClicked(MouseEvent e) {
             int indice = view.getListSelect();
+            DefaultListModel model = view.getListModel();
 
             if (indice != -1) {
+                 view.habilitacaoDeCampos(false);
                 view.setEndereco(contatos.get(indice).getEndereco());
-                view.setTableModel(listar(contatos.get(indice).getTelefones()),colunas);
+                
+                view.getTable().setModel(new DefaultTableModel(listar(contatos.get(indice).getTelefones()), colunas));
+                
             } else {
                 JOptionPane.showMessageDialog(null, "Nada seleciona!", "Erro", JOptionPane.CANCEL_OPTION);
             }
 
         }
 
+    }
+    class EditarEnderecoListener implements ActionListener{
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+        view.habilitacaoDeCampos(true);
+        }  
+    }
+    
+    class SalvarEnderecoListener implements ActionListener{
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            int indiceLista = view.getListSelect();
+            Endereco endereco = view.getEndereco();
+            contatos.get(indiceLista).setEndereco(endereco);
+            view.habilitacaoDeCampos(false);
+        }
+        
     }
     //---------------------------- Listener do Contato.java ------------------------------
 
@@ -156,7 +189,7 @@ public class AgendaController {
             int indice = view.getListSelect();
             Telefone telefone = cadTelefone.getTelefone();
             contatos.get(indice).addTelefone(telefone);
-            view.setTableModel(listar(contatos.get(indice).getTelefones()),colunas);
+            view.getTable().setModel(new DefaultTableModel(listar(contatos.get(indice).getTelefones()), colunas));
             cadTelefone.setVisible(false);
             cadTelefone.limpar();
         }

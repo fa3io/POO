@@ -14,6 +14,9 @@ public class Agenda extends ArrayList<Contato>{
 	public void addContato(Contato contato) {
 		contatos.add(contato);
 	}
+        public Contato RemoveContato(int index){
+            return contatos.remove(index);
+        }
 
 	public void delContatoByIndex(int index) {
 		contatos.remove(index);
@@ -40,19 +43,21 @@ public class Agenda extends ArrayList<Contato>{
 				contato = contatos.get(i);
 			}
 		}
-
 		return contato;
 	}
-
-	public Contato getContatoByName(String nome) {
-		Contato contato = null;
+	public List getContatoByName(String nome) {
+		List retorno = new ArrayList<>();
 
 		for (int i = 0; i < contatos.size(); i++) {
-			if (contatos.get(1).getNome().equals(nome)) {
-				contato = contatos.get(i);
+			if (contatos.get(i).getNome().equals(nome)) {
+				Contato contato = contatos.get(i);
+                                retorno.add(contato);
 			}
 		}
-
-		return contato;
+		return retorno;
 	}
+        
+        public Contato getContato(int index){
+           return contatos.get(index);
+        }
 }

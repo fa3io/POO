@@ -2,6 +2,7 @@
 package aula3.agenda;
 
 import java.awt.event.ActionListener;
+import java.awt.event.KeyListener;
 import java.awt.event.MouseAdapter;
 import java.util.List;
 import javax.swing.DefaultListModel;
@@ -298,6 +299,9 @@ public class Principal extends javax.swing.JFrame {
         listContatos.addMouseListener(mouseAdpter); 
         // verificar implementação no java GUJ com Vinny Godoi 
     }
+    public void addPesquisaListener(KeyListener keyListener){
+        txtPesquisa.addKeyListener(keyListener);
+    }
     
     public void setListModel(List<Contato> lista){
         modelLista.removeAllElements();
@@ -317,8 +321,10 @@ public class Principal extends javax.swing.JFrame {
         endereco.setComplemento(txtComplemento.getText());
         endereco.setCep(txtCep.getText());
         
-        return endereco;
-        
+        return endereco; 
+    }
+    public String getPesquisa(){
+        return txtPesquisa.getText();
     }
     
     public void setEndereco(Endereco endereco){
@@ -328,7 +334,13 @@ public class Principal extends javax.swing.JFrame {
         txtCep.setText(endereco.getCep());
     }
     
-
+     // Mudando a consulta ao item selecionado na lista em vez de o indece passar o objeto
+    public Contato getListContatoSelected(){
+        Contato contato = (Contato) listContatos.getSelectedValue();
+        return contato;
+        
+    }
+    
     public int getListSelect(){
         return listContatos.getSelectedIndex();
     }

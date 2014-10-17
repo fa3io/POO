@@ -2,6 +2,8 @@ package aula3.agenda;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.List;
@@ -14,11 +16,11 @@ public class AgendaController {
     private final Principal view;
     private final CadContato cadContato;
     private final CadTelefone cadTelefone;
-    private final Agenda contatos;
+    private final Agenda agenda;
     private final String[] colunas = new String[]{"Tipo","Numero"};
 
     public AgendaController(Principal view, CadContato cadContato, CadTelefone cadTelefone) {
-        contatos = new Agenda();
+        agenda = new Agenda();
         this.view = view;
         this.cadContato = cadContato;
         this.cadTelefone = cadTelefone;
@@ -30,6 +32,7 @@ public class AgendaController {
         view.addRemoveTelefoneListener(new RemoveTelefoneListener());
         view.addEditarEnderecoListener(new EditarEnderecoListener());
         view.addSalvarEnderecoListener(new SalvarEnderecoListener());
+        view.addPesquisaListener(new AddPesquisarListener());
 
         this.cadTelefone.addTelefoneListener(new TelefoneListener());
 
@@ -88,9 +91,12 @@ public class AgendaController {
                DefaultTableModel model = view.getTableModel();
                
                model.removeRow(indiceTabela);
-               contatos.get(indiceLista).getTelefones().remove(indiceTabela);
                
-               view.getTable().setModel(new DefaultTableModel(listar(contatos.get(indiceLista).getTelefones()), colunas));
+             //agenda.getContato(indiceLista).getTelefones().remove(indiceTabela);
+             view.getListContatoSelected().getTelefones().remove(indiceTabela);
+             
+               
+              view.getTable().setModel(new DefaultTableModel(listar(agenda.getContato(indiceLista).getTelefones()), colunas));
                
               
                 
@@ -111,7 +117,7 @@ public class AgendaController {
 
             if (indice != -1) {
                 model.remove(indice);
-                contatos.remove(indice);
+               agenda.RemoveContato(indice);
                 view.limparCampos(colunas);
             } else {
                 JOptionPane.showMessageDialog(null, "Não é possivel Remover", "Erro em Remoção", JOptionPane.CANCEL_OPTION);
@@ -128,9 +134,15 @@ public class AgendaController {
 
             if (indice != -1) {
                  view.habilitacaoDeCampos(false);
-                view.setEndereco(contatos.get(indice).getEndereco());
-                
-                view.getTable().setModel(new DefaultTableModel(listar(contatos.get(indice).getTelefones()), colunas));
+                 //Mudando o modo de pegar contato selecionado na lista
+                 //view.setEndereco(agenda.getContato(indice).getEndereco());
+                 
+                 view.setEndereco(view.getListContatoSelected().getEndereco());
+                 
+                 
+                //Mudando o modo de pegar contato selecionado na lista
+                //view.getTable().setModel(new DefaultTableModel(listar(agenda.getContato(indice).getTelefones()), colunas));
+                 view.getTable().setModel(new DefaultTableModel(listar(view.getListContatoSelected().getTelefones()), colunas));
                 
             } else {
                 JOptionPane.showMessageDialog(null, "Nada seleciona!", "Erro", JOptionPane.CANCEL_OPTION);
@@ -153,8 +165,41 @@ public class AgendaController {
         public void actionPerformed(ActionEvent e) {
             int indiceLista = view.getListSelect();
             Endereco endereco = view.getEndereco();
-            contatos.get(indiceLista).setEndereco(endereco);
+            
+             //Mudando o modo de pegar contato selecionado na lista
+            //agenda.getContato(indiceLista).setEndereco(endereco);
+            
+            view.getListContatoSelected().setEndereco(endereco);
             view.habilitacaoDeCampos(false);
+        }
+        
+    }
+    class AddPesquisarListener implements KeyListener{
+
+        @Override
+        public void keyTyped(KeyEvent e) { 
+        }
+
+        @Override
+        public void keyPressed(KeyEvent e) {    
+        }
+
+        @Override
+        public void keyReleased(KeyEvent e) {
+            String busca = view.getPesquisa();
+            System.out.println(busca);
+            
+            List retorno = agenda.getContatoByName(busca);
+            System.out.println(retorno);
+           
+           if(!retorno.isEmpty()){
+               view.setListModel(retorno);
+           }else{
+               view.setListModel(agenda.getContatos()); 
+           }
+           
+           
+           
         }
         
     }
@@ -165,10 +210,13 @@ public class AgendaController {
         @Override
         public void actionPerformed(ActionEvent e) {
             Contato contato = cadContato.getContato();
-            contatos.add(contato);
-            view.setListModel(contatos);
-            cadContato.setVisible(false);
-            cadContato.limparCampos();
+           
+            contato.setId(agenda.getContatos().size()+1);
+            
+           agenda.addContato(contato);
+           view.setListModel(agenda.getContatos());
+           cadContato.setVisible(false);
+           cadContato.limparCampos();
         }
     }
 
@@ -188,8 +236,17 @@ public class AgendaController {
         public void actionPerformed(ActionEvent e) {
             int indice = view.getListSelect();
             Telefone telefone = cadTelefone.getTelefone();
-            contatos.get(indice).addTelefone(telefone);
-            view.getTable().setModel(new DefaultTableModel(listar(contatos.get(indice).getTelefones()), colunas));
+            
+            //Mudando o modo de pegar contato selecionado na lista
+            //agenda.getContato(indice).addTelefone(telefone);
+            
+            view.getListContatoSelected().addTelefone(telefone);
+            
+            //Mudando o modo de pegar contato selecionado na lista
+            // view.getTable().setModel(new DefaultTableModel(listar(agenda.getContato(indice).getTelefones()), colunas));
+            
+   
+            view.getTable().setModel(new DefaultTableModel(listar(view.getListContatoSelected().getTelefones()), colunas));
             cadTelefone.setVisible(false);
             cadTelefone.limpar();
         }

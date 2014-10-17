@@ -60,7 +60,7 @@ public class Contato {
 
     @Override
     public String toString() {
-        return getNome();
+        return getId() +" - "+getNome();
     }
         
         

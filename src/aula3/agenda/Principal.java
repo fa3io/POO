@@ -315,9 +315,6 @@ public class Principal extends javax.swing.JFrame {
         txtCep.setText(endereco.getCep());
     }
     
-    public void setTelefones(List<Telefone> telefones){
-        // logica para colocar telefones na tabela
-    }
     public int getListSelect(){
         return listContatos.getSelectedIndex();
     }

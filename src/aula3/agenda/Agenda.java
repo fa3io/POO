@@ -35,15 +35,16 @@ public class Agenda extends ArrayList<Contato>{
 		return "";
 	}
 
-	public Contato getContatoById(int id) {
-		Contato contato = null;
+	public  List getContatoById(int id) {
+		List retorno = new ArrayList<>();
 
 		for (int i = 0; i < contatos.size(); i++) {
-			if (contatos.get(1).getId().equals(id)) {
-				contato = contatos.get(i);
+			if (contatos.get(i).getId().equals(id)) {
+				Contato contato = contatos.get(i);
+                                retorno.add(contato);
 			}
 		}
-		return contato;
+		return retorno;
 	}
 	public List getContatoByName(String nome) {
 		List retorno = new ArrayList<>();

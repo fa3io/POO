@@ -40,7 +40,7 @@ public class CadContato extends javax.swing.JDialog {
         setTitle("Cadastro De Contato");
         setResizable(false);
 
-        panelContato.setBorder(javax.swing.BorderFactory.createBevelBorder(0));
+        panelContato.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         lbNome.setText("Nome:");
 
@@ -144,10 +144,8 @@ public class CadContato extends javax.swing.JDialog {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        btnCadastrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/aula3/agenda/img/save.png"))); // NOI18N
         btnCadastrar.setText("Cadastrar");
 
-        btnLimpar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/aula3/agenda/img/clear.png"))); // NOI18N
         btnLimpar.setText("Limpar");
 
         javax.swing.GroupLayout panelContatoLayout = new javax.swing.GroupLayout(panelContato);

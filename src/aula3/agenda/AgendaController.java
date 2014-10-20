@@ -6,7 +6,6 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.text.ParseException;
 import java.util.List;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
@@ -184,8 +183,10 @@ public class AgendaController {
 
         @Override
         public void keyReleased(KeyEvent e) {
-
-            if (view.getPesquisa().equals("nome")) {
+            
+            System.out.println("Pressionado!");
+            
+            if (view.tipoPesquisa().equals("nome")) {
 
                 String busca = view.getPesquisa();
                 System.out.println(busca);
@@ -199,7 +200,9 @@ public class AgendaController {
                     view.setListModel(agenda.getContatos());
                 }
 
-            } else if (view.getPesquisa().equals("id")) {
+            } else if (view.tipoPesquisa().equals("id")) {
+                
+                if(!view.getPesquisa().equals("")){
                 Integer busca = Integer.parseInt(view.getPesquisa());
                 System.out.println(busca);
                 List retorno = agenda.getContatoById(busca);
@@ -209,7 +212,7 @@ public class AgendaController {
                 } else {
                     view.setListModel(agenda.getContatos());
                 }
-                
+                }   
 
                
 

@@ -17,6 +17,7 @@ public class Principal extends javax.swing.JFrame {
         initComponents();
         habilitacaoDeCampos(false);
         modelLista = new DefaultListModel();
+        rbPesquisaNome.setSelected(true);
         
     }
 
@@ -60,7 +61,6 @@ public class Principal extends javax.swing.JFrame {
         panelPrincipal.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         lbTitulo.setFont(new java.awt.Font("Old English Text MT", 1, 36)); // NOI18N
-        lbTitulo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/aula3/agenda/img/phonebook.png"))); // NOI18N
         lbTitulo.setText("Agenda");
 
         panelEndereco.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Endereço"));
@@ -72,10 +72,6 @@ public class Principal extends javax.swing.JFrame {
         lbComplemento.setText("Complemento:");
 
         lbCep.setText("CEP:");
-
-        btnEditarEndereco.setIcon(new javax.swing.ImageIcon(getClass().getResource("/aula3/agenda/img/edit.png"))); // NOI18N
-
-        btnSalvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/aula3/agenda/img/save2.png"))); // NOI18N
 
         javax.swing.GroupLayout panelEnderecoLayout = new javax.swing.GroupLayout(panelEndereco);
         panelEndereco.setLayout(panelEnderecoLayout);
@@ -145,10 +141,6 @@ public class Principal extends javax.swing.JFrame {
         ));
         spTblTelefones.setViewportView(tblTelefones);
 
-        btnAdicionarTelefone.setIcon(new javax.swing.ImageIcon(getClass().getResource("/aula3/agenda/img/add.png"))); // NOI18N
-
-        btnRemoverTelefone.setIcon(new javax.swing.ImageIcon(getClass().getResource("/aula3/agenda/img/remove.png"))); // NOI18N
-
         javax.swing.GroupLayout panelTelefoneLayout = new javax.swing.GroupLayout(panelTelefone);
         panelTelefone.setLayout(panelTelefoneLayout);
         panelTelefoneLayout.setHorizontalGroup(
@@ -168,15 +160,13 @@ public class Principal extends javax.swing.JFrame {
                 .addGroup(panelTelefoneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelTelefoneLayout.createSequentialGroup()
                         .addComponent(btnAdicionarTelefone)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 64, Short.MAX_VALUE)
                         .addComponent(btnRemoverTelefone))
                     .addComponent(spTblTelefones, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
         panelContato.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Contatos"));
-
-        btnRemoverContato.setIcon(new javax.swing.ImageIcon(getClass().getResource("/aula3/agenda/img/remove.png"))); // NOI18N
 
         gbpesquisa.add(rbPesquisaId);
         rbPesquisaId.setText("ID");
@@ -212,14 +202,12 @@ public class Principal extends javax.swing.JFrame {
 
         spListContato.setViewportView(listContatos);
 
-        btnAdicionarContato.setIcon(new javax.swing.ImageIcon(getClass().getResource("/aula3/agenda/img/add.png"))); // NOI18N
-
         javax.swing.GroupLayout panelContatoLayout = new javax.swing.GroupLayout(panelContato);
         panelContato.setLayout(panelContatoLayout);
         panelContatoLayout.setHorizontalGroup(
             panelContatoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelContatoLayout.createSequentialGroup()
-                .addContainerGap(14, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(panelContatoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(panelPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(panelContatoLayout.createSequentialGroup()
@@ -301,7 +289,7 @@ public class Principal extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(panelPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(54, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -409,10 +397,10 @@ public class Principal extends javax.swing.JFrame {
     }
     public String tipoPesquisa(){
         
-        String pesquisa = "";
+        String pesquisa = "nome";
         if(rbPesquisaId.isSelected()){
             pesquisa = "id";
-        }else{
+        }else if(rbPesquisaNome.isSelected()){
             pesquisa = "nome";
         }
         return pesquisa;

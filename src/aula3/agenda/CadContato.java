@@ -144,8 +144,10 @@ public class CadContato extends javax.swing.JDialog {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        btnCadastrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/aula3/img/save.png"))); // NOI18N
         btnCadastrar.setText("Cadastrar");
 
+        btnLimpar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/aula3/img/clear.png"))); // NOI18N
         btnLimpar.setText("Limpar");
 
         javax.swing.GroupLayout panelContatoLayout = new javax.swing.GroupLayout(panelContato);

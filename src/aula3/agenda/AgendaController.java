@@ -99,7 +99,7 @@ public class AgendaController {
                 view.getTable().setModel(new DefaultTableModel(listar(agenda.getContato(indiceLista).getTelefones()), colunas));
 
             } else {
-                JOptionPane.showMessageDialog(null, "Selecione um contato para incluir telefone", "Erro de Seleção", JOptionPane.CANCEL_OPTION);
+                JOptionPane.showMessageDialog(null, "Selecione um contato para remover telefone", "Erro de Seleção", JOptionPane.CANCEL_OPTION);
             }
 
         }
@@ -152,7 +152,15 @@ public class AgendaController {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            view.habilitacaoDeCampos(true);
+            int indice = view.getListSelect();
+            
+             if (indice != -1) {
+                 view.habilitacaoDeCampos(true);
+             }else{
+                  JOptionPane.showMessageDialog(null, "Selecione um contato para editar endereço", "Erro de Seleção", JOptionPane.CANCEL_OPTION);
+             }
+            
+            
         }
     }
 
@@ -161,12 +169,21 @@ public class AgendaController {
         @Override
         public void actionPerformed(ActionEvent e) {
             int indiceLista = view.getListSelect();
-            Endereco endereco = view.getEndereco();
-
-             //Mudando o modo de pegar contato selecionado na lista
+            
+            
+             if (indiceLista != -1) {
+                 Endereco endereco = view.getEndereco();
+                 
+                  //Mudando o modo de pegar contato selecionado na lista
             //agenda.getContato(indiceLista).setEndereco(endereco);
+           
             view.getListContatoSelected().setEndereco(endereco);
             view.habilitacaoDeCampos(false);
+             }else{
+                  JOptionPane.showMessageDialog(null, "Selecione um contato para editar endereço", "Erro de Seleção", JOptionPane.CANCEL_OPTION);
+             }
+
+            
         }
 
     }
@@ -189,10 +206,10 @@ public class AgendaController {
             if (view.tipoPesquisa().equals("nome")) {
 
                 String busca = view.getPesquisa();
-                System.out.println(busca);
+                //System.out.println(busca);
 
                 List retorno = agenda.getContatoByName(busca);
-                System.out.println(retorno);
+               // System.out.println(retorno);
 
                 if (!retorno.isEmpty()) {
                     view.setListModel(retorno);
@@ -204,9 +221,9 @@ public class AgendaController {
                 
                 if(!view.getPesquisa().equals("")){
                 Integer busca = Integer.parseInt(view.getPesquisa());
-                System.out.println(busca);
+                //System.out.println(busca);
                 List retorno = agenda.getContatoById(busca);
-                System.out.println(retorno);
+               // System.out.println(retorno);
                 if (!retorno.isEmpty()) {
                     view.setListModel(retorno);
                 } else {

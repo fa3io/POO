@@ -40,6 +40,7 @@ public class CadTelefone extends javax.swing.JDialog {
 
         lbNumero.setText("Numero");
 
+        btnCadastrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/aula3/img/save.png"))); // NOI18N
         btnCadastrar.setText("Cadastrar");
 
         javax.swing.GroupLayout panelPrincipalLayout = new javax.swing.GroupLayout(panelPrincipal);

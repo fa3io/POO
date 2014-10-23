@@ -1,5 +1,6 @@
-
 package aula3.conta;
+
+import java.awt.event.ActionListener;
 
 public class LoginConta extends javax.swing.JDialog {
 
@@ -52,7 +53,7 @@ public class LoginConta extends javax.swing.JDialog {
                         .addComponent(btnEntrar)
                         .addGap(18, 18, 18)
                         .addComponent(btnCancelar)))
-                .addContainerGap(39, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         panelLoginContaLayout.setVerticalGroup(
             panelLoginContaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -88,9 +89,30 @@ public class LoginConta extends javax.swing.JDialog {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+ public void addEntrarListener(ActionListener listener) {
+        btnEntrar.addActionListener(listener);
+    }
 
-  
+    public void addCancelarListener(ActionListener listener) {
+        btnCancelar.addActionListener(listener);
+    }
+
+    public Login getLogin() {
+
+        Login login = new Login();
+        
+        login.setNumero(Integer.parseInt(txtNumeroConta.getText()));
+        login.setSenha(new String(txtSenha.getPassword()));
+        
+        return login;
+    }
+    void limparCampos() {
+       txtNumeroConta.setText("");
+       txtSenha.setText("");
+    }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancelar;
@@ -101,4 +123,6 @@ public class LoginConta extends javax.swing.JDialog {
     private javax.swing.JTextField txtNumeroConta;
     private javax.swing.JPasswordField txtSenha;
     // End of variables declaration//GEN-END:variables
+
+    
 }

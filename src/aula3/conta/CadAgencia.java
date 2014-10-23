@@ -1,6 +1,8 @@
 
 package aula3.conta;
 
+import java.awt.event.ActionListener;
+
 public class CadAgencia extends javax.swing.JDialog {
 
     public CadAgencia(java.awt.Frame parent, boolean modal) {
@@ -76,20 +78,43 @@ public class CadAgencia extends javax.swing.JDialog {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(panelCadAgencia, javax.swing.GroupLayout.PREFERRED_SIZE, 373, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(panelCadAgencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(panelCadAgencia, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(panelCadAgencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    
+    public void addSalvarListener(ActionListener listener){
+        btnSalvar.addActionListener(listener);
+    }
+    public void addCancelarListener(ActionListener listener){
+        btnCancelar.addActionListener(listener);
+    }
+    
+    public Agencia getAgencia(){
+        
+        Agencia agencia = new Agencia();
+        
+        agencia.setNome(txtNome.getText());
+        agencia.setNumero(txtNumero.getText());
+        
+        return agencia;
+    }
+    public void limparCampos(){
+        txtNome.setText("");
+        txtNumero.setText("");
+    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancelar;

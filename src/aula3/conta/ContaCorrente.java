@@ -8,7 +8,7 @@ public class ContaCorrente {
     private String senha;
     private Agencia agencia;
     private Cliente correntista;
-    private BigDecimal saldo;
+    private BigDecimal saldo = new BigDecimal("0");
 
     public ContaCorrente() {
 
@@ -58,7 +58,7 @@ public class ContaCorrente {
         if (valor.compareTo(saldo) == -1) {
             return false;
         } else {
-            saldo = saldo.add(valor);
+            saldo = saldo.subtract(valor);
             return true;
         }
     }
@@ -67,9 +67,12 @@ public class ContaCorrente {
         if (valor.compareTo(BigDecimal.ZERO) == -1) {
             return false;
         } else {
-            saldo = saldo.subtract(valor);
+            saldo = saldo.add(valor);
             return true;
         }
+    }
+    public Double getSaldo(){
+        return saldo.doubleValue();
     }
 }
 

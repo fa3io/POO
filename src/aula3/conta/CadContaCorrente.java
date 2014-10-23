@@ -1,6 +1,9 @@
 
 package aula3.conta;
 
+import java.awt.event.ActionListener;
+import javax.swing.JComboBox;
+
 public class CadContaCorrente extends javax.swing.JDialog {
 
     public CadContaCorrente(java.awt.Frame parent, boolean modal) {
@@ -40,7 +43,7 @@ public class CadContaCorrente extends javax.swing.JDialog {
 
         btnSalvar.setText("Salvar");
 
-        btnCancelar.setText("Limpar");
+        btnCancelar.setText("Cancelar");
 
         javax.swing.GroupLayout panelCadContatoLayout = new javax.swing.GroupLayout(panelCadContato);
         panelCadContato.setLayout(panelCadContatoLayout);
@@ -70,7 +73,7 @@ public class CadContaCorrente extends javax.swing.JDialog {
                             .addGroup(panelCadContatoLayout.createSequentialGroup()
                                 .addComponent(lbsenha)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtSenha, javax.swing.GroupLayout.DEFAULT_SIZE, 114, Short.MAX_VALUE)
+                                .addComponent(txtSenha, javax.swing.GroupLayout.DEFAULT_SIZE, 131, Short.MAX_VALUE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(lbAgencia)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -119,8 +122,40 @@ public class CadContaCorrente extends javax.swing.JDialog {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    
+     public void addSalvarListener(ActionListener listener){
+        btnSalvar.addActionListener(listener);
+    }
+    public void addCancelarListener(ActionListener listener){
+        btnCancelar.addActionListener(listener);
+    }
+    
+    public ContaCorrente getContaCorrente(){
+        ContaCorrente contaCorrente = new ContaCorrente();
+        Cliente correntista = new Cliente();
+        correntista.setNome(txtNome.getText());
+        
+        contaCorrente.setAgencia( (Agencia) cbAgencia.getSelectedItem());
+        contaCorrente.setCorrentista(correntista);
+        contaCorrente.setNumero(Integer.parseInt(txtNumero.getText()));
+        contaCorrente.setSenha(new String(txtSenha.getPassword()));
+ 
+        
+        return contaCorrente;
+    }
+    public void limparCampos(){
+        txtNome.setText("");
+        txtNumero.setText("");
+        txtSenha.setText("");
+        cbAgencia.setSelectedIndex(0);
+    }
+    
+    public JComboBox getCbAgecia(){
+        return  cbAgencia;
+    }
    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

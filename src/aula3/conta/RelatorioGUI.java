@@ -1,6 +1,8 @@
 
 package aula3.conta;
 
+import javax.swing.JTable;
+
 public class RelatorioGUI extends javax.swing.JDialog {
 
     
@@ -59,8 +61,13 @@ public class RelatorioGUI extends javax.swing.JDialog {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    public JTable getTableRelatorio(){
+        
+       return tbRelatorio;
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lbRelatorio;

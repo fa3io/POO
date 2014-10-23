@@ -55,7 +55,7 @@ public class ContaCorrente {
     }
 
     public Boolean sacar(BigDecimal valor) {
-        if (valor.compareTo(saldo) == -1) {
+        if (valor.compareTo(saldo) <= 0) {
             return false;
         } else {
             saldo = saldo.subtract(valor);

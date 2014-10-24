@@ -12,16 +12,16 @@ import javax.swing.table.DefaultTableModel;
 
 public class ContaController {
 
-    private CadContaCorrente cadContaCorrente;
-    private CadAgencia cadAgencia;
-    private LoginConta loginConta;
-    private Principal principal;
-    private TelaConta telaConta;
-    private RelatorioGUI relatorio;
-    private List<ContaCorrente> contas = new ArrayList<>();
-    private List<Agencia> agencias = new ArrayList<>();
+    private final CadContaCorrente cadContaCorrente;
+    private final CadAgencia cadAgencia;
+    private final LoginConta loginConta;
+    private final Principal principal;
+    private final TelaConta telaConta;
+    private final RelatorioGUI relatorio;
+    private final List<ContaCorrente> contas = new ArrayList<>();
+    private final List<Agencia> agencias = new ArrayList<>();
     private ContaCorrente ContaManipulada;
-    public static final String[] COLUNAS = { "Agencia", "Num Conta", "Correntista"};
+    public static final String[] COLUNAS = {"Agencia", "Num Conta", "Correntista"};
 
     public ContaController(CadContaCorrente cadContaCorrente, CadAgencia cadAgencia, LoginConta loginConta, Principal priciPrincipal, TelaConta telaConta, RelatorioGUI relatorio) {
         this.cadContaCorrente = cadContaCorrente;
@@ -57,20 +57,26 @@ public class ContaController {
 
     //----------------------------------------Metodos Classe.java--------------------
     private void logar(Login login) {
+        Boolean existe = false;
 
         for (ContaCorrente conta : contas) {
             if (conta.getNumero().equals(login.getNumero())) {
                 if (conta.getSenha().equals(login.getSenha())) {
-                    loginConta.setVisible(true);
+                    existe = true;
                     ContaManipulada = conta;
                     telaConta.setBoasVindas(conta.getCorrentista().getNome());
-                    System.out.println("Bem Vindo " + conta.getCorrentista().getNome());
-                    telaConta.setVisible(true);
                     break;
                 }
             }
+        }
+
+        if (existe) {
+            loginConta.setVisible(false);
+            telaConta.setVisible(true);
+        } else {
             JOptionPane.showMessageDialog(null, "Agencia e Contas Invalidos", "Erro de Login", JOptionPane.ERROR_MESSAGE);
         }
+
     }
 
     private void preencheComboBox(JComboBox combobox, List<Agencia> lista) {
@@ -83,7 +89,7 @@ public class ContaController {
 
         DefaultTableModel model = new DefaultTableModel(convertLista(contas), COLUNAS);
         tableRelatorio.setModel(model);
-         
+
     }
 
     private String[][] convertLista(List<ContaCorrente> lista) {
@@ -91,7 +97,7 @@ public class ContaController {
 
         for (int i = 0; i < lista.size(); i++) {
 
-            dados[i][0] = lista.get(i).getAgencia().getNome();
+            dados[i][0] = lista.get(i).getAgencia().toString();
             dados[i][1] = String.valueOf(lista.get(i).getNumero());
             dados[i][2] = lista.get(i).getCorrentista().getNome();
         }
@@ -99,7 +105,7 @@ public class ContaController {
 
     }
 
-        //----------------------------------------Principal.java--------------------
+    //----------------------------------------Principal.java--------------------
     public class CadastrarContaLister implements ActionListener {
 
         @Override
@@ -142,7 +148,7 @@ public class ContaController {
 
     }
 
-         //----------------------------------------CadContaCorrente.java--------------------
+    //----------------------------------------CadContaCorrente.java--------------------
     public class ContaCorrenteSalvarListener implements ActionListener {
 
         @Override
@@ -163,7 +169,7 @@ public class ContaController {
         }
 
     }
-         //----------------------------------------CadAgencia.java--------------------
+    //----------------------------------------CadAgencia.java--------------------
 
     public class AgenciaSalvarListener implements ActionListener {
 
@@ -186,7 +192,7 @@ public class ContaController {
         }
 
     }
-      //----------------------------------------Login.java--------------------
+    //----------------------------------------Login.java--------------------
 
     public class LoginEntrarListener implements ActionListener {
 
@@ -194,6 +200,7 @@ public class ContaController {
         public void actionPerformed(ActionEvent e) {
             Login login = loginConta.getLogin();
             logar(login);
+            loginConta.limparCampos();
         }
 
     }
@@ -208,7 +215,7 @@ public class ContaController {
 
     }
 
-        //----------------------------------------TelaConta.java--------------------
+    //----------------------------------------TelaConta.java--------------------
     public class ContaSaldoListener implements ActionListener {
 
         @Override
@@ -223,6 +230,7 @@ public class ContaController {
         @Override
         public void actionPerformed(ActionEvent e) {
             String valor = JOptionPane.showInputDialog(null, "Valor a Sacar: ", "Saque", JOptionPane.QUESTION_MESSAGE);
+            if(valor != null){
             Boolean realizado = ContaManipulada.sacar(new BigDecimal(valor));
 
             if (realizado) {
@@ -230,7 +238,7 @@ public class ContaController {
             } else {
                 JOptionPane.showMessageDialog(null, "Saque não pode ser realizado", "Erro ao Sacar", JOptionPane.ERROR_MESSAGE);
             }
-
+            }
         }
 
     }
@@ -240,12 +248,15 @@ public class ContaController {
         @Override
         public void actionPerformed(ActionEvent e) {
             String valor = JOptionPane.showInputDialog(null, "Valor a Depositar: ", "Deposito", JOptionPane.QUESTION_MESSAGE);
+            
+            if(valor != null){
             Boolean realizado = ContaManipulada.depositar(new BigDecimal(valor));
-
+            
             if (realizado) {
                 JOptionPane.showMessageDialog(null, "Deposito Efetuado con Sucesso ", "Deposito Efetuado", JOptionPane.INFORMATION_MESSAGE);
             } else {
                 JOptionPane.showMessageDialog(null, "Deposito não pode ser realizado", "Erro ao Deposiar", JOptionPane.ERROR_MESSAGE);
+            }
             }
         }
 

@@ -61,7 +61,6 @@ public class Principal extends javax.swing.JFrame {
         panelPrincipal.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         lbTitulo.setFont(new java.awt.Font("Old English Text MT", 1, 36)); // NOI18N
-        lbTitulo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/aula3/img/phonebook.png"))); // NOI18N
         lbTitulo.setText("Agenda");
 
         panelEndereco.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Endereço"));
@@ -74,9 +73,9 @@ public class Principal extends javax.swing.JFrame {
 
         lbCep.setText("CEP:");
 
-        btnEditarEndereco.setIcon(new javax.swing.ImageIcon(getClass().getResource("/aula3/img/edit.png"))); // NOI18N
+        btnEditarEndereco.setText("Edit");
 
-        btnSalvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/aula3/img/save2.png"))); // NOI18N
+        btnSalvar.setText("Save");
 
         javax.swing.GroupLayout panelEnderecoLayout = new javax.swing.GroupLayout(panelEndereco);
         panelEndereco.setLayout(panelEnderecoLayout);
@@ -102,10 +101,10 @@ public class Principal extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtCep)))
                 .addGap(18, 18, 18)
-                .addGroup(panelEnderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnEditarEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(40, Short.MAX_VALUE))
+                .addGroup(panelEnderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnSalvar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnEditarEndereco, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
         panelEnderecoLayout.setVerticalGroup(
             panelEnderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -122,7 +121,7 @@ public class Principal extends javax.swing.JFrame {
                     .addComponent(txtComplemento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lbCep)
                     .addComponent(txtCep, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(14, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelEnderecoLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(btnEditarEndereco)
@@ -144,9 +143,10 @@ public class Principal extends javax.swing.JFrame {
         ));
         spTblTelefones.setViewportView(tblTelefones);
 
-        btnAdicionarTelefone.setIcon(new javax.swing.ImageIcon(getClass().getResource("/aula3/img/add.png"))); // NOI18N
+        btnAdicionarTelefone.setText("Add");
+        btnAdicionarTelefone.setToolTipText("");
 
-        btnRemoverTelefone.setIcon(new javax.swing.ImageIcon(getClass().getResource("/aula3/img/remove.png"))); // NOI18N
+        btnRemoverTelefone.setText("Del");
 
         javax.swing.GroupLayout panelTelefoneLayout = new javax.swing.GroupLayout(panelTelefone);
         panelTelefone.setLayout(panelTelefoneLayout);
@@ -156,9 +156,9 @@ public class Principal extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(spTblTelefones, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(panelTelefoneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnRemoverTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnAdicionarTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(panelTelefoneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnAdicionarTelefone, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnRemoverTelefone, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         panelTelefoneLayout.setVerticalGroup(
@@ -177,7 +177,7 @@ public class Principal extends javax.swing.JFrame {
 
         panelContato.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Contatos"));
 
-        btnRemoverContato.setIcon(new javax.swing.ImageIcon(getClass().getResource("/aula3/img/remove.png"))); // NOI18N
+        btnRemoverContato.setText("Del");
 
         gbpesquisa.add(rbPesquisaId);
         rbPesquisaId.setText("ID");
@@ -213,7 +213,7 @@ public class Principal extends javax.swing.JFrame {
 
         spListContato.setViewportView(listContatos);
 
-        btnAdicionarContato.setIcon(new javax.swing.ImageIcon(getClass().getResource("/aula3/img/add.png"))); // NOI18N
+        btnAdicionarContato.setText("Add");
 
         javax.swing.GroupLayout panelContatoLayout = new javax.swing.GroupLayout(panelContato);
         panelContato.setLayout(panelContatoLayout);
@@ -226,11 +226,11 @@ public class Principal extends javax.swing.JFrame {
                     .addGroup(panelContatoLayout.createSequentialGroup()
                         .addGap(10, 10, 10)
                         .addComponent(spListContato, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(panelContatoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnAdicionarContato, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnRemoverContato, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(18, 18, 18))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(panelContatoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btnRemoverContato, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnAdicionarContato, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addContainerGap())
         );
         panelContatoLayout.setVerticalGroup(
             panelContatoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -295,7 +295,7 @@ public class Principal extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(panelPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

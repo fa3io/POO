@@ -31,7 +31,7 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Component id="panelPrincipal" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace pref="18" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -110,9 +110,6 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Old English Text MT" size="36" style="1"/>
             </Property>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/aula3/img/phonebook.png"/>
-            </Property>
             <Property name="text" type="java.lang.String" value="Agenda"/>
           </Properties>
         </Component>
@@ -157,11 +154,11 @@
                           </Group>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="btnSalvar" min="-2" pref="39" max="-2" attributes="0"/>
-                          <Component id="btnEditarEndereco" min="-2" pref="37" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="btnSalvar" max="32767" attributes="0"/>
+                          <Component id="btnEditarEndereco" max="32767" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="40" max="32767" attributes="0"/>
+                      <EmptySpace pref="18" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -182,7 +179,7 @@
                           <Component id="lbCep" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="txtCep" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace pref="14" max="32767" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
@@ -225,16 +222,12 @@
             </Component>
             <Component class="javax.swing.JButton" name="btnEditarEndereco">
               <Properties>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/aula3/img/edit.png"/>
-                </Property>
+                <Property name="text" type="java.lang.String" value="Edit"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JButton" name="btnSalvar">
               <Properties>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/aula3/img/save2.png"/>
-                </Property>
+                <Property name="text" type="java.lang.String" value="Save"/>
               </Properties>
             </Component>
           </SubComponents>
@@ -259,9 +252,9 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="spTblTelefones" min="-2" pref="400" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="btnRemoverTelefone" min="-2" pref="44" max="-2" attributes="0"/>
-                          <Component id="btnAdicionarTelefone" min="-2" pref="44" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="btnAdicionarTelefone" max="32767" attributes="0"/>
+                          <Component id="btnRemoverTelefone" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
@@ -324,16 +317,13 @@
             </Container>
             <Component class="javax.swing.JButton" name="btnAdicionarTelefone">
               <Properties>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/aula3/img/add.png"/>
-                </Property>
+                <Property name="text" type="java.lang.String" value="Add"/>
+                <Property name="toolTipText" type="java.lang.String" value=""/>
               </Properties>
             </Component>
             <Component class="javax.swing.JButton" name="btnRemoverTelefone">
               <Properties>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/aula3/img/remove.png"/>
-                </Property>
+                <Property name="text" type="java.lang.String" value="Del"/>
               </Properties>
             </Component>
           </SubComponents>
@@ -357,18 +347,18 @@
                   <Group type="102" attributes="0">
                       <EmptySpace max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="panelPesquisa" min="-2" max="-2" attributes="0"/>
-                          <Group type="102" attributes="0">
+                          <Component id="panelPesquisa" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
                               <Component id="spListContato" min="-2" pref="130" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="btnAdicionarContato" min="-2" pref="44" max="-2" attributes="0"/>
-                                  <Component id="btnRemoverContato" min="-2" pref="44" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="btnRemoverContato" max="32767" attributes="0"/>
+                                  <Component id="btnAdicionarContato" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
-                      <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -397,9 +387,7 @@
           <SubComponents>
             <Component class="javax.swing.JButton" name="btnRemoverContato">
               <Properties>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/aula3/img/remove.png"/>
-                </Property>
+                <Property name="text" type="java.lang.String" value="Del"/>
               </Properties>
             </Component>
             <Container class="javax.swing.JPanel" name="panelPesquisa">
@@ -475,9 +463,7 @@
             </Container>
             <Component class="javax.swing.JButton" name="btnAdicionarContato">
               <Properties>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/aula3/img/add.png"/>
-                </Property>
+                <Property name="text" type="java.lang.String" value="Add"/>
               </Properties>
             </Component>
           </SubComponents>

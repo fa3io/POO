@@ -17,7 +17,7 @@ public class AumentoDeSalario {
         Scanner teclado = new Scanner(System.in);
         
         
-        salario = teclado.nextDouble()
+        salario = teclado.nextDouble();
         
 
         

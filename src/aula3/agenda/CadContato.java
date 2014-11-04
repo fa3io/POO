@@ -1,11 +1,13 @@
-
 package aula3.agenda;
+
+import java.awt.event.ActionListener;
 
 public class CadContato extends javax.swing.JDialog {
 
     public CadContato(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        rbFixo.setSelected(true);
     }
 
     @SuppressWarnings("unchecked")
@@ -38,7 +40,7 @@ public class CadContato extends javax.swing.JDialog {
         setTitle("Cadastro De Contato");
         setResizable(false);
 
-        panelContato.setBorder(javax.swing.BorderFactory.createBevelBorder(0));
+        panelContato.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         lbNome.setText("Nome:");
 
@@ -142,10 +144,8 @@ public class CadContato extends javax.swing.JDialog {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        btnCadastrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/aula3/agenda/img/save.png"))); // NOI18N
         btnCadastrar.setText("Cadastrar");
 
-        btnLimpar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/aula3/agenda/img/clear.png"))); // NOI18N
         btnLimpar.setText("Limpar");
 
         javax.swing.GroupLayout panelContatoLayout = new javax.swing.GroupLayout(panelContato);
@@ -207,39 +207,65 @@ public class CadContato extends javax.swing.JDialog {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-/*
-    public static void main(String args[]) {
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(CadContato.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(CadContato.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(CadContato.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(CadContato.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                CadContato dialog = new CadContato(new javax.swing.JFrame(), true);
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    @Override
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-                });
-                dialog.setVisible(true);
-            }
-        });
+    public void addCadastarContatoListener(ActionListener listener) {
+        btnCadastrar.addActionListener(listener);
     }
-    */
-    
+
+    public void addLimparContatoListener(ActionListener listener) {
+        btnLimpar.addActionListener(listener);
+    }
+
+    public Contato getContato() {
+        Contato contato = new Contato();
+        Endereco endereco = new Endereco();
+        Telefone telefone = new Telefone();
+
+        contato.setNome(txtNome.getText());
+
+        endereco.setLogradouro(txtLogradouro.getText());
+        endereco.setNumero(txtNumeroEndereco.getText());
+        endereco.setComplemento(txtComplemento.getText());
+        endereco.setCep(txtCep.getText());
+
+        telefone.setTipo(rbFixo.isSelected() ? "Fixo" : "Celular");
+        telefone.setTelefone(txtNumeroTelefone.getText());
+
+        contato.setEndereco(endereco);
+        contato.addTelefone(telefone);
+
+        return contato;
+    }
+
+    public void setContato(Contato contato) {
+        Endereco endereco = contato.getEndereco();
+
+        txtNome.setText(contato.getNome());
+
+        txtLogradouro.setText(endereco.getLogradouro());
+        txtNumeroEndereco.setText(endereco.getNumero());
+        txtComplemento.setText(endereco.getComplemento());
+        txtCep.setText(endereco.getCep());
+
+        // Verificar outras implementação para desabilitar campos
+        rbCelular.enable(false);
+        rbFixo.enable(false);
+        txtNumeroTelefone.enable(false);
+
+    }
+
+    public void limparCampos() {
+
+        txtNome.setText("");
+        txtLogradouro.setText("");
+        txtNumeroEndereco.setText("");
+        txtComplemento.setText("");
+        txtCep.setText("");
+        rbFixo.setSelected(true);
+        txtNumeroTelefone.setText("");
+
+    }
+
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup bgTipoTelefone;
     private javax.swing.JButton btnCadastrar;

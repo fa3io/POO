@@ -3,7 +3,7 @@ package uri;
 import java.util.Scanner;
 import java.util.Locale;
 
-public class Main {
+public class VaiTerCopa {
 
 
 	public static void main(String[] args) {

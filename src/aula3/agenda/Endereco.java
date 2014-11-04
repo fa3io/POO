@@ -54,6 +54,6 @@ public class Endereco {
 	
 	@Override
 	public String toString() {
-		return getLogradouro() + " Nº " +getNumero()+"  "+ getComplemento()+ " Cep: " + getCep();
+		return getLogradouro() + " N. " +getNumero()+"  "+ getComplemento()+ " Cep: " + getCep();
 	}
 }

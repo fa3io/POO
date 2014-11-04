@@ -8,7 +8,7 @@ public class Agenda extends ArrayList<Contato>{
 	private List<Contato> contatos;
 
 	public Agenda() {
-		contatos = new ArrayList<Contato>();
+		this.contatos = new ArrayList<>();
 	}
 
 	public void addContato(Contato contato) {

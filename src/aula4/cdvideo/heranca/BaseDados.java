@@ -7,7 +7,7 @@ import java.util.List;
 public class BaseDados {
     
     
-    List<Item> lista = new ArrayList<>();
+    private List<Item> lista = new ArrayList<>();
 
 
     public void apagaItem(int idItem) {

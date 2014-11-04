@@ -45,6 +45,14 @@ public abstract class Item {
     public void setEmprestado(Boolean emprestado) {
         this.emprestado = emprestado;
     }
+
+    public Integer getTempoDuracao() {
+        return tempoDuracao;
+    }
+
+    public void setTempoDuracao(Integer tempoDuracao) {
+        this.tempoDuracao = tempoDuracao;
+    }
     
     
     

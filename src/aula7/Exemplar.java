@@ -6,7 +6,18 @@ public class Exemplar {
 	private Livro livro;
 	private Pessoa quemTomouEmprestado;
 	private boolean emprestado;
+	
+	
 
+	public Exemplar(long id, Livro livro, Pessoa quemTomouEmprestado,
+			boolean emprestado) {
+		super();
+		this.id = id;
+		this.livro = livro;
+		this.quemTomouEmprestado = quemTomouEmprestado;
+		this.emprestado = emprestado;
+	}
+	
 	public long getId() {
 		return id;
 	}
@@ -30,5 +41,10 @@ public class Exemplar {
 	}
 	public void setEmprestado(boolean emprestado) {
 		this.emprestado = emprestado;
+	}
+	
+	@Override
+	public String toString() {
+		return getId()+" - "+getLivro().getTitulo() +" emprestado para:"+ getQuemTomouEmprestado().getNome();
 	}
 }

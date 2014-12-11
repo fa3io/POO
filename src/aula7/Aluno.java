@@ -29,4 +29,8 @@ public class Aluno extends Pessoa {
 	public void setCurso(String curso) {
 		this.curso = curso;
 	}
+	@Override
+	public String toString() {
+		return getId() +" - "+getNome()+" Matricula: "+getMatricula();
+	}
 }

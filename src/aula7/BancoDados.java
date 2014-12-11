@@ -39,21 +39,18 @@ public class BancoDados {
 	public void addPessoa(Pessoa pessoa){
 		pessoas.add(pessoa);
 	}
-
-	public List<Exemplar> getExemplares() {
-		return exemplares;
-	}
 	
 	public void addLivro(Livro livro){
 		livros.add(livro);
 	}
-	public void setExemplares(List<Exemplar> exemplares) {
-		this.exemplares = exemplares;
-	}
 	public List<Pessoa> getPessoas() {
 		return pessoas;
 	}
-	public void setPessoas(List<Pessoa> pessoas) {
-		this.pessoas = pessoas;
+	public List<Livro> getLivros(){
+		return livros;
 	}
+	public List<Exemplar> getExemplares(){
+		return exemplares;
+	}
+	
 }

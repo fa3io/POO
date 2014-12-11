@@ -52,4 +52,9 @@ public class Livro {
 	public void setCategoria(String categoria) {
 		this.categoria = categoria;
 	}
+	
+	@Override
+	public String toString() {
+		return getId()+" - ISBN: "+getIsbn()+" - "+ getTitulo()+ " : "+getAutor();
+	}
 }

@@ -54,5 +54,10 @@ public class Pessoa {
 	public void setEmprestimos(List<Exemplar> emprestimos) {
 		this.emprestimos = emprestimos;
 	} 
+	
+	@Override
+	public String toString() {
+		return getId() +" - "+getNome()+" CPF: "+getCPF();
+	}
 
 }

@@ -35,18 +35,45 @@ public class Sistema {
 			}else if (opcao.equals("5")) {
 				cadPessoa();
 			}else if (opcao.equals("6")) {
-				listarLivros();
+				cadLivros();
 			}
-			// adicionar as demais opções aqui!!!
+			
 
 		} while (!opcao.equals("9"));
 
 		System.out.println("ATÉ!!!");
 	}
 
+	private static void cadLivros() {
+		Livro livro = new Livro();
+		
+		livro.setId(bancoDados.getLivros().size()+1);
+		System.out.println("Digite o Isbn :");
+		livro.setIsbn(sc.next());
+		System.out.println("Digite o Nome :");
+		livro.setTitulo(sc.next());
+		System.out.println("Digite o Autor :");
+		livro.setAutor(sc.next());
+		System.out.println("Digite a Categoria :");
+		livro.setCategoria(sc.next());
+		
+		bancoDados.getLivros().add(livro);
+		
+		
+	}
+
 	private static void cadPessoa() {
+		Pessoa pessoa = new Pessoa();
 		
+		pessoa.setId(bancoDados.getPessoas().size()+1);
+		System.out.println("Digite o Nome :");
+		pessoa.setNome(sc.next());
+		System.out.println("Digite o CPF :");
+		pessoa.setCPF(sc.next());
+		System.out.println("Digite a idade :");
+		pessoa.setIdade(sc.nextInt());
 		
+		bancoDados.getPessoas().add(pessoa);
 	}
 
 	private static void cadEmprestimo() {
@@ -68,15 +95,20 @@ public class Sistema {
 	}
 
 	private static void listExemplares() {
-		System.out.println("Lista de Exemplares /n");
+		System.out.println("Lista de Exemplares \n");
 		List<Exemplar> exemplares = bancoDados.getExemplares();
-		for (Exemplar exemplar : exemplares) {
-			System.out.println(exemplar);
+		
+		if (exemplares.isEmpty()) {
+			System.out.println("Lista Vazia");
+		}else{
+			for (Exemplar exemplar : exemplares) {
+				System.out.println(exemplar);
+			}
 		}
 	}
 
 	private static void listAlunos() {
-		System.out.println("Lista de Alunos /n");
+		System.out.println("Lista de Alunos \n");
 		List<Pessoa> pessoas = bancoDados.getPessoas();
 		for (Pessoa pessoa : pessoas) {
 			System.out.println(pessoa);
@@ -84,7 +116,7 @@ public class Sistema {
 	}
 
 	private static void listarLivros() {
-		System.out.println("Lista de Livros /n");
+		System.out.println("Lista de Livros \n");
 		List<Livro> livros = bancoDados.getLivros();
 		for (Livro livro : livros) {
 			System.out.println(livro);

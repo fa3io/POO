@@ -53,8 +53,4 @@ public abstract class Item {
     public void setTempoDuracao(Integer tempoDuracao) {
         this.tempoDuracao = tempoDuracao;
     }
-    
-    
-    
-    
 }

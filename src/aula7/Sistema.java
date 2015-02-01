@@ -14,14 +14,14 @@ public class Sistema {
 		
 		do {
 			System.out.println("\nMENU");
-			System.out.println("1 - Cadastrar empréstimo de livro.");
+			System.out.println("1 - Cadastrar emprï¿½stimo de livro.");
 			System.out.println("2 - Listagem de exemplares.");
 			System.out.println("3 - Listagem de alunos.");
 			System.out.println("4 - Listagem de Livros.");
 			System.out.println("5 - Cadastrar Pessoa.");
 			System.out.println("6 - Cadastrar Livro.");
 			System.out.println("9 - Sair");
-			System.out.println("\nOpção: ");
+			System.out.println("\nOpcaoo: ");
 			opcao = sc.nextLine();
 
 			if (opcao.equals("1")) {
@@ -41,7 +41,7 @@ public class Sistema {
 
 		} while (!opcao.equals("9"));
 
-		System.out.println("ATÉ!!!");
+		System.out.println("ATEH!!!");
 	}
 
 	private static void cadLivros() {
@@ -49,13 +49,13 @@ public class Sistema {
 		
 		livro.setId(bancoDados.getLivros().size()+1);
 		System.out.println("Digite o Isbn :");
-		livro.setIsbn(sc.next());
+		livro.setIsbn(sc.nextLine());
 		System.out.println("Digite o Nome :");
-		livro.setTitulo(sc.next());
+		livro.setTitulo(sc.nextLine());
 		System.out.println("Digite o Autor :");
-		livro.setAutor(sc.next());
+		livro.setAutor(sc.nextLine());
 		System.out.println("Digite a Categoria :");
-		livro.setCategoria(sc.next());
+		livro.setCategoria(sc.nextLine());
 		
 		bancoDados.getLivros().add(livro);
 		
@@ -67,9 +67,9 @@ public class Sistema {
 		
 		pessoa.setId(bancoDados.getPessoas().size()+1);
 		System.out.println("Digite o Nome :");
-		pessoa.setNome(sc.next());
+		pessoa.setNome(sc.nextLine());
 		System.out.println("Digite o CPF :");
-		pessoa.setCPF(sc.next());
+		pessoa.setCPF(sc.nextLine());
 		System.out.println("Digite a idade :");
 		pessoa.setIdade(sc.nextInt());
 		
